@@ -22,22 +22,10 @@ function App() {
               <Route path="/" element={<AuthLayout />}>
                 <Route index element={<Login />} />
                 <Route path="register" element={<Register />} />
-                {/*      
-            <Route path="forgot-password" element={<ForgotPassword />} />
-            <Route
-              path="forgot-password/:token"
-              element={<NewPassword />}
-            />
-            <Route path="confirm/:id" element={<ConfirmAccount />} /> */}
               </Route>
               <Route path="/products" element={<ProtectedRoute />}>
                 <Route index element={<Products />} />
                 <Route path=":id" element={<Product />} />
-                {/* 
-            <Route index element={<Projects />} />
-            <Route path="create-project" element={<NewProject />} />
-            <Route path=":id" element={<Project />} />
-            */}
               </Route>
               <Route path="/product" element={<EditCreateLayout />}>
                 <Route path=":id" element={<EditProduct />} />
