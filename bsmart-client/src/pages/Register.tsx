@@ -16,18 +16,9 @@ const Register = () => {
           <Alert key={item} type="error" textContent={item} />
         ))}
       <UserForm isRegister={true} />
-      <nav className="lg:flex lg:justify-between">
-        <Link
-          className="block text-center my-5 text-slate-500 uppercase text-sm"
-          to="/"
-        >
+      <nav className="lg:flex lg:justify-center">
+        <Link className="block my-5 text-slate-500 uppercase text-sm" to="/">
           Already have an account yet? Sign in
-        </Link>
-        <Link
-          className="block text-center my-5 text-slate-500 uppercase text-sm"
-          to="/forgot-password"
-        >
-          Forgot your password?
         </Link>
       </nav>
     </>

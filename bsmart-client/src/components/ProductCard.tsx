@@ -16,7 +16,7 @@ const ProductCard = ({ id, name, price, stock, category_id }: Product) => {
           {category.name ? category.name : "Uncategorized"}
         </span>
       </h2>
-      <div className="flex justify-between">
+      <div className="flex flex-col sm:flex-row gap-y-8 justify-between mt-5">
         <div className="">
           <p className="text-sky-600 text-2xl font-bold">{name}</p>
           <p className="my-3">
@@ -32,21 +32,21 @@ const ProductCard = ({ id, name, price, stock, category_id }: Product) => {
             <span className="text-sky-500 font-bold">$ {price}</span>
           </p>
         </div>
-        <div className="flex justify-between items-center gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <Link
-            className="bg-sky-600 text-white flex items-center justify-center rounded w-28 h-8"
+            className="bg-sky-600 text-white flex items-center justify-center rounded w-full sm:w-28 h-8"
             to={`/product/${id}`}
           >
             Edit
           </Link>
           <button
             onClick={() => deleteProduct(Number(id))}
-            className="bg-red-500 text-white flex items-center justify-center rounded w-28 h-8"
+            className="bg-red-500 text-white flex items-center justify-center rounded w-full sm:w-28 h-8"
           >
             Delete
           </button>
           <Link
-            className="bg-green-400 text-white flex items-center justify-center rounded w-28 h-8"
+            className="bg-green-400 text-white flex items-center justify-center rounded w-full sm:w-28 h-8"
             to={`/products/${id}`}
           >
             See details

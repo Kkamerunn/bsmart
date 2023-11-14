@@ -16,18 +16,12 @@ const Login = () => {
           <Alert key={item} type="error" textContent={item} />
         ))}
       <UserForm isRegister={false} />
-      <nav className="lg:flex lg:justify-between">
+      <nav className="lg:flex lg:justify-center">
         <Link
-          className="block text-center my-5 text-slate-500 uppercase text-sm"
+          className="block my-5 text-slate-500 uppercase text-sm"
           to="/register"
         >
           Don't you have an account yet? Sign up
-        </Link>
-        <Link
-          className="block text-center my-5 text-slate-500 uppercase text-sm"
-          to="/forgot-password"
-        >
-          Forgot your password?
         </Link>
       </nav>
     </>

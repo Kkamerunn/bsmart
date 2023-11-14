@@ -9,15 +9,15 @@ const Header = () => {
 
   return (
     <nav className="sm:flex sm:justify-between p-4 items-center w-full bg-sky-600">
-      <div>
+      <div className="text-center mb-2 sm:text-left sm:mb-0">
         <Link
-          className="text-center my-5 text-white uppercase text-sm font-bold"
+          className="my-5 text-white uppercase text-sm font-bold"
           to="/products"
         >
           Home
         </Link>
       </div>
-      <div className="sm:flex gap-x-8 items-center">
+      <div className="flex flex-col sm:flex-row gap-x-8 gap-y-4 sm:gap-y-0  items-center">
         {token ? (
           <>
             <button
@@ -34,21 +34,21 @@ const Header = () => {
             </button>
             <Link
               to="/product/create"
-              className="text-center my-5 text-white uppercase text-sm font-bold"
+              className="text-center sm:my-5 text-white uppercase text-sm font-bold"
             >
               New Product
             </Link>
           </>
         ) : (
           <Link
-            className="text-center my-5 text-white uppercase text-sm font-bold"
+            className="text-center sm:my-5 text-white uppercase text-sm font-bold"
             to="/"
           >
             Log in
           </Link>
         )}
         <Link
-          className="text-center my-5 text-white uppercase text-sm font-bold"
+          className="text-center sm:my-5 text-white uppercase text-sm font-bold"
           to="/register"
         >
           Sign up

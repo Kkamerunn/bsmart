@@ -5,6 +5,7 @@ import axiosClient from "../config/axios";
 
 export type ProductContextData = {
   products: Product[];
+  links: string[];
   categories: Category[];
   product: Product;
   loading: boolean;
@@ -29,6 +30,7 @@ const ProductsContext = createContext<ProductContextData | undefined>(
 
 const ProductsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [links, setLinks] = useState([]);
   const [categories, setCategories] = useState([]);
   const [product, setProduct] = useState({
     id: 0,
@@ -73,6 +75,9 @@ const ProductsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     try {
       const { data } = await axiosClient("/products");
       setProducts(data.data);
+      const linksMoreProducts = [...data.meta.links].slice(2);
+      linksMoreProducts.pop();
+      const links = linksMoreProducts.map((link) => link.url);
     } catch (error) {
       setErrors(Object.values(error.response.data.errors));
     }
@@ -201,6 +206,7 @@ const ProductsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const contextValue: ProductContextData = {
     products,
+    links,
     categories,
     product,
     getProducts,
