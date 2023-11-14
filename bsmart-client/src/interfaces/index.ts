@@ -59,6 +59,10 @@ export interface AlertProps {
   type: string;
 }
 
-export interface CategoryComponentProps {
-  category: Category;
+export interface updateCategoryComponentProps {
+  category?: Category;
+}
+
+export interface newCategoryComponentProps {
+  addNewCategory?: boolean;
 }

@@ -19,6 +19,7 @@ export type ProductContextData = {
   openModal: boolean;
   handleOpenModal: () => void;
   editCategory: (category: Category) => void;
+  createCategory: (newCategory: string) => void;
   deleteCategory: (id: number) => void;
 };
 
@@ -163,6 +164,29 @@ const ProductsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setLoading(false);
   };
 
+  const createCategory = async (newCategory: string) => {
+    setErrors([]);
+    setLoading(true);
+    const newCategoryData = {
+      name: newCategory,
+    };
+    try {
+      const { data } = await axiosClient.post(
+        "/categories",
+        newCategoryData,
+        config
+      );
+      setSuccessMsg(data.message);
+      setTimeout(() => {
+        setSuccessMsg("");
+      }, 4000);
+      getCategories();
+    } catch (error) {
+      setErrors(Object.values(error.response.data.errors));
+    }
+    setLoading(false);
+  };
+
   const deleteCategory = async (id: number) => {
     setLoading(true);
     try {
@@ -191,6 +215,7 @@ const ProductsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     openModal,
     handleOpenModal,
     editCategory,
+    createCategory,
     deleteCategory,
   };
 
