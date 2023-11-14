@@ -13,7 +13,7 @@ const ProductCard = ({ id, name, price, stock, category_id }: Product) => {
     <div className="w-10/12 my-7 mx-auto rounded-lg border border-sky-500 p-8">
       <h2 className="flex justify-end">
         <span className="text-right text-white font-semibold bg-sky-500 rounded-md p-2">
-          {category.name}
+          {category.name ? category.name : "Uncategorized"}
         </span>
       </h2>
       <div className="flex justify-between">

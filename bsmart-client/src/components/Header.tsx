@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useProduct from "../hooks/useProduct";
 
 const Header = () => {
   const { logout } = useAuth();
+  const { handleOpenModal } = useProduct();
   const token = localStorage.getItem("token");
 
   return (
@@ -18,6 +20,12 @@ const Header = () => {
       <div className="sm:flex gap-x-8 items-center">
         {token ? (
           <>
+            <button
+              className="bg-white text-sky-600 p-2 rounded-md font-bold h-10"
+              onClick={handleOpenModal}
+            >
+              Categories
+            </button>
             <button
               className="bg-white text-sky-600 p-2 rounded-md font-bold h-10"
               onClick={logout}

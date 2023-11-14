@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return new ProductsCollection(Product::orderBy('name', 'ASC')->paginate(10));
+        return new ProductsCollection(Product::orderBy('name', 'ASC')->paginate(20));
     }
 
     /**

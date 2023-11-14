@@ -16,6 +16,10 @@ export type ProductContextData = {
   getCategories: () => void;
   errors: string[];
   successMsg: string;
+  openModal: boolean;
+  handleOpenModal: () => void;
+  editCategory: (category: Category) => void;
+  deleteCategory: (id: number) => void;
 };
 
 const ProductsContext = createContext<ProductContextData | undefined>(
@@ -35,6 +39,7 @@ const ProductsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const [successMsg, setSuccessMsg] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
   const token = localStorage.getItem("token");
   const config = {
@@ -143,6 +148,33 @@ const ProductsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setLoading(false);
   };
 
+  const handleOpenModal = () => {
+    setOpenModal(!openModal);
+  };
+
+  const editCategory = async (category: Category) => {
+    setErrors([]);
+    setLoading(true);
+    try {
+      await axiosClient.put(`/categories/${category.id}`, category, config);
+    } catch (error) {
+      setErrors(Object.values(error.response.data.errors));
+    }
+    setLoading(false);
+  };
+
+  const deleteCategory = async (id: number) => {
+    setLoading(true);
+    try {
+      await axiosClient.delete(`/categories/${id}`, config);
+      const newCategoriesState = categories.filter((item) => item["id"] !== id);
+      setProducts(newCategoriesState);
+    } catch (error) {
+      setErrors(Object.values(error.response.data.errors));
+    }
+    setLoading(false);
+  };
+
   const contextValue: ProductContextData = {
     products,
     categories,
@@ -156,6 +188,10 @@ const ProductsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     loading,
     errors,
     successMsg,
+    openModal,
+    handleOpenModal,
+    editCategory,
+    deleteCategory,
   };
 
   return (

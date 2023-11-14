@@ -29,7 +29,7 @@ export interface Product {
 }
 
 export interface Category {
-  id?: number;
+  id: number;
   name: string;
 }
 
@@ -57,4 +57,8 @@ export interface UserFormProps {
 export interface AlertProps {
   textContent: string;
   type: string;
+}
+
+export interface CategoryComponentProps {
+  category: Category;
 }

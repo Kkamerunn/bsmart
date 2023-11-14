@@ -30,7 +30,7 @@ const UserForm = ({ isRegister }: UserFormProps) => {
   return (
     <>
       <form
-        className="my-10 bg-white shadow rounded-lg px-6 py-3"
+        className="mt-10 mb-5 bg-white shadow rounded-lg px-6 py-3"
         onSubmit={handleSubmit}
       >
         {errors.map((error, index) => (
